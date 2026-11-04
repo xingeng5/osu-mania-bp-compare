@@ -6,12 +6,12 @@ osu!mania 双人 BP（top plays）对比工具：在同一键数与平台口径�
 
 ## 怎么用
 
-1. **双击 `mania-bp-compare.exe`** 
+1. **双击 `mania-bp-compare.exe`** —— 会自动打开浏览器（默认 `http://127.0.0.1:7788`）
 2. **首次启动**会跳到设置页，填一串 osu! OAuth 凭据：
    - 打开 <https://osu.ppy.sh/home/account/edit>，拉到页面底部 **OAuth** 区块
    - 点 **New OAuth Application**：Name 随便填，Redirect URL 填 `http://localhost:7788/callback`（本程序用不到，但表单必填）
    - 创建后把 **Client ID** 和 **Client Secret** 填进设置页，点「保存并开始」
-3. **输入两个玩家**（用户名 / 数字 ID / `osu.ppy.sh/users/...` ）
+3. **输入两个玩家**（用户名 / 数字 ID / `osu.ppy.sh/users/...`）
 
 凭据只需要填这一次，之后双击就用。想换人重填：访问 `http://127.0.0.1:7788/setup`。
 
@@ -45,9 +45,19 @@ osu!mania 双人 BP（top plays）对比工具：在同一键数与平台口径�
 ## 目录与卸载
 
 两个文件，都在它所在的文件夹里：
+
 - `mania-bp-compare.exe`
 - `mania-bp-compare.config.json`（填了凭据才会有）
+
 **卸载 = 删掉这两个文件**
+
+## 维护者：改完之后怎么出包
+
+```powershell
+# 本目录：改前端，出 dist/
+pnpm install
+pnpm build
+
 # go\：把 ..\dist 嵌进 exe
 cd go
 build.bat
