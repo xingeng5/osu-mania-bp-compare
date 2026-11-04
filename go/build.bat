@@ -12,7 +12,8 @@ if exist "web" rmdir /S /Q "web"
 mkdir web
 xcopy /E /I /Y "..\dist" "web" >nul
 
-%GO% build -trimpath -ldflags "-s -w" -o dist\mania-bp-compare.exe .
+rem -buildvcs=false: keep the binary byte-identical regardless of local git state.
+%GO% build -trimpath -buildvcs=false -ldflags "-s -w" -o dist\mania-bp-compare.exe .
 if errorlevel 1 (
   echo Build failed.
   exit /b 1
