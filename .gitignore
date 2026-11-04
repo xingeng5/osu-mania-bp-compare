@@ -1,0 +1,18 @@
+node_modules/
+.pnpm-store/
+dist/
+dist-portable/
+build/
+go/web/
+*.exe
+.env.local
+.env
+.omc/
+*.log
+Thumbs.db
+.DS_Store
+# m0/ 里是 M0 阶段抓下来的真实 API 响应；best-*.json 被单元测试当 fixture 读取，
+# 必须入库（内容全部来自公开 API，不含任何密钥），其余（如 rankings.html 抓取快照）忽略。
+m0/*
+!m0/best-10790649.json
+mania-bp-compare.config.json

@@ -1,0 +1,13 @@
+# 包仓库（store）放进项目目录而不是系统盘：从项目根解析（相对路径写法的基准就是项目根）。
+# 注意 pnpm 11 只认这里的 storeDir，.npmrc 里的 store-dir 已经被忽略；改完要重新 install 才会重新链接。
+storeDir: .pnpm-store
+# vite 的 ESM 依赖（picomatch 等）在 .pnpm 里链接不全，需要 hoist 到根 node_modules；
+# 但 @babel/* 是 CJS，require('lru-cache') 必须拿到 5.x，11.x 没有 LRUCache 命名导出 → 排除它。
+shamefullyHoist: true
+hoistPattern:
+  - '*'
+  - '!lru-cache'
+# pnpm 11 用 allowBuilds 白名单放行依赖的构建脚本（pnpm 10 的 onlyBuiltDependencies 已不生效）。
+# esbuild 的 postinstall 只做自检，放行后 `pnpm install` 的退出码才会是 0。
+allowBuilds:
+  esbuild: true
