@@ -48,19 +48,5 @@ osu!mania 双人 BP（top plays）对比工具：在同一键数与平台口径�
 
 - `mania-bp-compare.exe`
 - `mania-bp-compare.config.json`（填了凭据才会有）
-
 **卸载 = 删掉这两个文件**
-
-## 维护者：改完之后怎么出包
-
-```powershell
-# 本目录：改前端，出 dist/
-pnpm install
-pnpm build
-
-# go\：把 ..\dist 嵌进 exe
-cd go
-build.bat
-```
-
-`build.bat` 会先清空 `web\` 再同步新的 `dist\`（避免哈希文件名的旧资源堆着），然后编译 `dist\mania-bp-compare.exe`。
+哈希文件名的旧资源堆着），然后编译 `dist\mania-bp-compare.exe`。
